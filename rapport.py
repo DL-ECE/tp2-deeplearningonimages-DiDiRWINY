@@ -602,13 +602,13 @@ def display_10_images(dataset):
       plot_one_tensor(image)
       plt.show()
 
+if __name__ == "__main__" :
+  fmnist_train = FashionMNIST(os.getcwd(), train=True, download=True)
+  print(fmnist_train)
+  display_10_images(fmnist_train)
 
-fmnist_train = FashionMNIST(os.getcwd(), train=True, download=True)
-print(fmnist_train)
-display_10_images(fmnist_train)
-
-image, target = fmnist_train[0]
-plot_one_tensor(image)
+  image, target = fmnist_train[0]
+  plot_one_tensor(image)
 
 """What is the shape of each images
 How many images do we have
@@ -685,7 +685,7 @@ class CNNModel(nn.Module):
         x = self.fc2(x)
         x = self.activation(x)
         x = self.fc3(x)
-        return y
+        return x
 
 def train_one_epoch(model, device, data_loader, optimizer):
     train_loss = 0
@@ -753,6 +753,11 @@ if __name__ == "__main__":
 
 """## Open Analysis
 Same as TP 1 please write a short description of your experiment
+
+#j'ai remarqué que mon accurency diminuait alors qu'elle a atteind les 92% donc j'ai décidé de mettre un nepoch inférieur ou égale à 5
+# et j'ai testé mon momentum est superieur ou égal à 1 j'ai obtenu un probléme de fitting 
+#j ai donc essayer par tatonnement d'obtenir plus de 92% d'accurency
+#mon mbatchsize est égal à 1000 sinon j'avais un problème d'accurency qui n'atteignait pas les  85%
 
 # BONUS 
 
